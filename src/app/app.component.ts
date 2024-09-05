@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CustomOperatorService } from './model/service/custom-operator.service';
 import { of, Subscription } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators'; 
+import { tap, catchError } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,10 +14,10 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'Custom_RxJs_Operator-Unit_Testing';
 
-  dataObs$ = of([1, 9, 4, 10, 0, 8, 7, 3]);
+  dataObs$: any = of([1, 9, 4, 10, 0, 8, 7, 3]);
   transformed: number[]| any = [];
 
-  private subscription!: Subscription
+  public subscription!: Subscription
 
   constructor(private customOps: CustomOperatorService) {}
 
