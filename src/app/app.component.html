@@ -1,17 +1,20 @@
-<main class="w-full min-h-screen p-0 m-0 border-box font-medium flex justify-center bg-slate-100">
-  <div class="flex flex-col justify-center gap-y-4  rounded-[.5rem]">
-    <h1 class="text-[2.25rem] font-head">
+<main class="w-full min-h-screen p-6 bg-slate-100 flex items-center justify-center">
+  <div class="flex flex-col justify-center gap-y-6 bg-white shadow-md p-8 rounded-lg max-w-2xl">
+    <h1 class="text-3xl font-bold text-gray-800 font-guerrilla">
       Custom RxJs Operator and Unit Testing
     </h1>
-    <div class="flex justify-between flex-col">
-      <p>Previous Observable(data stream) : {{ dataObs$ | async }}</p>
-      <p>
-        Transformed value :
-          @for(item of transformed; track item){
-            <span>{{ item }}</span>
-          }
+    <div class="flex flex-col space-y-4">
+      <p class="text-lg text-gray-600">Previous Observable (data stream):
+        <span class="font-medium text-gray-800">{{ dataObs$ | async }}</span>
       </p>
+      <div class="flex gap-3">
+        <p class="text-lg text-gray-600">Transformed value:</p>
+        <div class="flex flex-wrap gap-2">
+          @for(item of transformed; track item){
+            <span class="px-2 py-1 bg-indigo-500 text-white rounded-lg">{{ item }}</span>
+          }
+        </div>
+      </div>
     </div>
-
   </div>
 </main>
