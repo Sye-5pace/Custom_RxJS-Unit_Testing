@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CustomOperatorService } from './model/service/custom-operator.service';
-import { Observable, of, Subscription } from 'rxjs';
-import { tap, mergeMap, catchError } from 'rxjs/operators'; // Use mergeMap or switchMap
+import { of, Subscription } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators'; 
 import { CommonModule } from '@angular/common';
 
 @Component({
