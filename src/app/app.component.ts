@@ -15,6 +15,8 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'Custom_RxJs_Operator-Unit_Testing';
 
+  // Task 2: Implement a component to use with custom operator
+  // multiplyBy() operator
   dataObs$: any = of([1, 9, 4, 10, 0, 8, 7, 3]);
   transformed: number[]| any = [];
 
