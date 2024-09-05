@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { map, MonoTypeOperatorFunction, Observable, of, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { CustomOperatorService } from './model/service/custom-operator.service';
 
 describe('AppComponent', () => {
@@ -48,16 +48,14 @@ describe('AppComponent', () => {
     expect(subscriptionSpy).not.toHaveBeenCalled();
   });
 
-  it('should multiply each value by 2 when dataObs$ emits values', () => {
-    const customOperatorService = {
-      multiplyBy: jest.fn().mockReturnValue((source: { pipe: (arg0: MonoTypeOperatorFunction<unknown>) => any; }) => source.pipe(tap(value => value * 2)))
-    };
-    const component = new AppComponent(customOperatorService);
-    component.dataObs$ = of(1, 2, 3);
-    component.transformed = [];
-
-    component.performCustomOps();
-
-    expect(component.transformed).toEqual([2, 4, 6]);
-  });
+  it('should emit transformed values correctly when performing custom operations', () => {
+      const customOps = new CustomOperatorService();
+      const component = new AppComponent(customOps);
+      const consoleSpy = jest.spyOn(console, 'log');
+      const errorSpy = jest.spyOn(console, 'error');
+      component.performCustomOps();
+      expect(consoleSpy).toHaveBeenCalledWith('Custom Operator in action');
+      expect(component.transformed).toEqual([2, 18, 8, 20, 0, 16, 14, 6]);
+      expect(errorSpy).not.toHaveBeenCalled();
+    });
 });

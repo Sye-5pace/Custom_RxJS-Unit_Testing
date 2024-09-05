@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
   title = 'Custom_RxJs_Operator-Unit_Testing';
 
@@ -33,7 +34,7 @@ export class AppComponent {
         console.error('Error occurred:', err);
         return of([]);
       })
-    ).subscribe(value => this.transformed.push(value));
+    ).subscribe((value: any) => this.transformed.push(value));
   }
 
   //Attaching RxJs best practice
