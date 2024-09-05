@@ -3,7 +3,15 @@
     <h1 class="text-[2.25rem]">
       Custom RxJs Operator and Unit Testing
     </h1>
-    
+    <div class="flex justify-between flex-col">
+      <p>Previous Observable(data stream) : {{ dataObs$ | async }}</p>
+      <p>
+        Transformed value :
+        @for(item of transformed; track item){
+          <span>{{ item }}</span>
+        }
+      </p>
+    </div>
 
   </div>
 </main>

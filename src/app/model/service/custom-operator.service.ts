@@ -18,9 +18,9 @@ export class CustomOperatorService {
   //  by the argument(value) passed as the parameter to custom operator
   // Also this operator ignore the emitted value if is not a number
   multiplyBy(multiplier: number) {
-    return (datastream: Observable<number>)=> datastream.pipe(
-      map( value => typeof value === 'number' ? value * multiplier : value)
-    )
+    return (datastream: Observable<number[]>) => datastream.pipe(
+      map(values => values.map(value => typeof value === 'number' ? value * multiplier : value))
+    );
   }
 
 }

@@ -1,30 +1,32 @@
 import { Component } from '@angular/core';
 import { CustomOperatorService } from './model/service/custom-operator.service';
 import { Observable, of } from 'rxjs';
-
+import { tap, mergeMap } from 'rxjs/operators'; // Use mergeMap or switchMap
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'Custom_RxJs_Operator-Unit_Testing';
-  //Task 2: Implement an angular component:
-  // In this task, an observable is created to use the custom operator service
-  // in the component then display the original version of the observable(dataObs$)
-  // then the latest version of the observable(transformed$)
-  dataObs$ = of(1,9,4,10,0,8,7,3)
-  transformed$! : Observable<number>;
 
-  constructor(private customOps: CustomOperatorService){}
+  dataObs$ = of([1, 9, 4, 10, 0, 8, 7, 3]);
+  transformed: number[]| any = [];
 
-  ngOnInit(){
-    
+  constructor(private customOps: CustomOperatorService) {}
+
+  ngOnInit() {
+    this.performCustomOps();
   }
 
-
-
+  performCustomOps() {
+    this.dataObs$.pipe(
+      tap(() => console.log('Custom Operator in action')),
+      this.customOps.multiplyBy(2)
+    ).subscribe(value => this.transformed.push(value));
+  }
 }
