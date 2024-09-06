@@ -31,7 +31,7 @@ export class AppComponent {
   performCustomOps() {
     this.dataObs$.pipe(
       tap(() => console.log('Custom Operator in action')),
-      this.customOps.multiplyBy(2),
+      this.customOps.multiplyBy(10),
       catchError(err => {
         console.error('Error occurred:', err);
         return of([]);
