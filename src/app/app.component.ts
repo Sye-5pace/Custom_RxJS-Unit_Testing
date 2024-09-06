@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CustomOperatorService } from './model/service/custom-operator.service';
-import { of, Subscription } from 'rxjs';
+import { from, of, Subscription } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 
@@ -17,7 +17,7 @@ export class AppComponent {
 
   // Task 2: Implement a component to use with custom operator
   // multiplyBy() operator
-  dataObs$: any = of([1, 9, 4, 10, 0, 8, 7, 3]);
+  dataObs$: any = from([Array.from({length:10}, () => Math.floor(Math.random() * 10))]);
   transformed: number[]| any = [];
 
   public subscription!: Subscription
